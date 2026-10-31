@@ -1,0 +1,26 @@
+{
+  "name": "glob-demo",
+  "version": "1.0.0",
+  "description": "glob / minimatch / brace-expansion の挙動を確かめるデモ",
+  "scripts": {
+    "setup": "bash 00-setup.sh",
+    "glob": "node 01-glob.mjs",
+    "minimatch": "node 02-minimatch.mjs",
+    "makere": "node 03-makere.cjs",
+    "brace": "node 04-brace.mjs",
+    "tools": "bash 05-tools.sh"
+  },
+  "type": "commonjs",
+  "dependencies": {
+    "brace-expansion": "^5.0.12",
+    "eslint": "^10.14.0",
+    "glob": "^14.0.3",
+    "jest": "^30.5.2",
+    "minimatch": "^11.0.3",
+    "minimatch10": "npm:minimatch@^10.2.6",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.5"
+  },
+  "private": true,
+  "license": "MIT"
+}

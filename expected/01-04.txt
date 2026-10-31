@@ -1,0 +1,71 @@
+===== node 01-glob.mjs
+src/*.js {}
+  -> [ 'src/a.js', 'src/app.test.js' ]
+src/**/*.js {}
+  -> [
+  'src/__tests__/e.js',
+  'src/a.js',
+  'src/app.test.js',
+  'src/deep/nested/d.js'
+]
+src/**/*.js {"dot":true}
+  -> [
+  'src/.config/c.js',
+  'src/.config/f.test.js',
+  'src/.hidden.js',
+  'src/__tests__/e.js',
+  'src/a.js',
+  'src/app.test.js',
+  'src/deep/nested/d.js'
+]
+src/**/*.{js,ts} {}
+  -> [
+  'src/__tests__/e.js',
+  'src/a.js',
+  'src/app.test.js',
+  'src/b.ts',
+  'src/deep/nested/d.js'
+]
+src/**/*.js {"ignore":["**/*.test.js","src/__tests__/**"]}
+  -> [ 'src/a.js', 'src/deep/nested/d.js' ]
+===== node 02-minimatch.mjs
+true  src/a.js               src/*.js 
+false src/deep/nested/d.js   src/*.js 
+true  src/deep/nested/d.js   src/**/*.js 
+false src/.hidden.js         src/*.js 
+true  src/.hidden.js         src/*.js {"dot":true}
+false src/.config/c.js       src/**/*.js 
+true  src/b.ts               src/*.{js,ts} 
+false src/b.ts               src/*.{js,ts} {"nobrace":true}
+true  src/a.js               !src/*.ts 
+true  src/a.js               src/?.js 
+true  src/a.js               src/[ab].js 
+
+braceExpand("src/*.{js,ts}") -> [ 'src/*.js', 'src/*.ts' ]
+===== node 03-makere.cjs
+*.js           -> /^(?!\.)[^/]*?\.js$/
+src/**/*.js    -> /^src(?:\/|\/(?:(?!(?:\/|^)\.).)*?\/)(?!\.)[^/]*?\.js$/
+*.{js,ts}      -> /^(?:(?!\.)[^/]*?\.js|(?!\.)[^/]*?\.ts)$/
+
+minimatch@11 に makeRe はある? -> undefined / undefined
+===== node 04-brace.mjs
+[ 'file.js', 'file.ts' ]
+[ 'img1.png', 'img2.png', 'img3.png' ]
+[ 'ax', 'ay', 'bx', 'by' ]
+[
+  'src/components/**/*.ts',
+  'src/components/**/*.tsx',
+  'src/hooks/**/*.ts',
+  'src/hooks/**/*.tsx'
+]
+
+展開数の増え方: "{a,b}".repeat(n)
+n= 1 入力  5文字 ->      2件 (理論値 2^n=2) 合計2文字
+n= 2 入力 10文字 ->      4件 (理論値 2^n=4) 合計8文字
+n= 4 入力 20文字 ->     16件 (理論値 2^n=16) 合計64文字
+n= 8 入力 40文字 ->    256件 (理論値 2^n=256) 合計2048文字
+n=12 入力 60文字 ->   4096件 (理論値 2^n=4096) 合計49152文字
+n=16 入力 80文字 ->  65536件 (理論値 2^n=65536) 合計1048576文字
+
+max: 10 -> 10 件
+maxLength: 1000 -> 83 件, 合計 996 文字

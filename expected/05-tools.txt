@@ -1,0 +1,49 @@
+=== git (.gitignore)  git version 2.47.3
+-- .gitignore: src/*.js
+   src/a.js               ignored
+   src/.hidden.js         ignored
+   src/deep/nested/d.js   not-ignored
+-- .gitignore: src/**/*.js
+   src/deep/nested/d.js   ignored
+   src/.config/c.js       ignored
+-- .gitignore: src/*.{js,ts}
+   src/a.js               not-ignored
+   src/b.ts               not-ignored
+=== TypeScript (tsconfig include)  Version 7.0.2
+-- include: ["src/**/*"]
+   src/__tests__/e.js
+   src/a.js
+   src/app.test.js
+   src/b.ts
+   src/deep/nested/d.js
+-- include: ["src/**/*.{js,ts}"]
+   error TS18003: No inputs were found in config file 'tsconfig.json'. Specified 'include' paths were '["src/**/*.{js,ts}"]' and 'exclude' paths were '[]'.
+-- include: ["src/.config/*"]
+   src/.config/c.js
+   src/.config/f.test.js
+=== ESLint (flat config files)  v10.14.0
+   src/.config/c.js
+   src/.config/f.test.js
+   src/.hidden.js
+   src/__tests__/e.js
+   src/a.js
+   src/app.test.js
+   src/b.ts
+   src/deep/nested/d.js
+=== Jest (testMatch)  30.5.2
+-- default testMatch
+   src/.config/f.test.js
+   src/__tests__/e.js
+   src/app.test.js
+-- testMatch: ["<rootDir>/src/**/*.{js,ts}", "!**/*.test.js"]
+   src/.config/c.js
+   src/.hidden.js
+   src/__tests__/e.js
+   src/a.js
+   src/b.ts
+   src/deep/nested/d.js
+=== Vite (import.meta.glob)  vite/8.3.5 linux-x64 node-v20.19.2
+   plain      ./src/__tests__/e.js, ./src/a.js, ./src/app.test.js, ./src/deep/nested/d.js
+   brace      ./src/__tests__/e.js, ./src/a.js, ./src/app.test.js, ./src/b.ts, ./src/deep/nested/d.js
+   negated    ./src/__tests__/e.js, ./src/a.js, ./src/deep/nested/d.js
+   exhaustive ./src/.config/c.js, ./src/.config/f.test.js, ./src/.hidden.js, ./src/__tests__/e.js, ./src/a.js, ./src/app.test.js, ./src/deep/nested/d.js
