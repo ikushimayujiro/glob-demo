@@ -1,0 +1,48 @@
+# 実行環境 (2026-10-31 JST に確認)
+node v20.19.2 / npm 11.21.1 / git version 2.47.3
+├── brace-expansion@5.0.12
+├── eslint@10.14.0
+├── glob@14.0.3
+├── jest@30.5.2
+├── minimatch@11.0.3
+├── minimatch10@npm:minimatch@10.2.6
+├── typescript@7.0.2
+└── vite@8.3.5
+
+
+## npm ls brace-expansion
+glob-demo@1.0.0 /workspace/articles/glob/demo
+├── brace-expansion@5.0.12
+├─┬ eslint@10.14.0
+│ ├─┬ @eslint/config-array@0.23.5
+│ │ └─┬ minimatch@10.2.6
+│ │   └── brace-expansion@5.0.12 deduped
+│ └─┬ minimatch@10.2.6
+│   └── brace-expansion@5.0.12 deduped
+├─┬ jest@30.5.2
+│ └─┬ @jest/core@30.5.2
+│   ├─┬ @jest/reporters@30.5.2
+│   │ └─┬ glob@13.0.6
+│   │   └─┬ minimatch@10.2.6
+│   │     └── brace-expansion@5.0.12 deduped
+│   ├─┬ @jest/transform@30.5.2
+│   │ └─┬ babel-plugin-istanbul@8.0.0
+│   │   └─┬ test-exclude@7.0.2
+│   │     ├─┬ glob@10.5.0
+│   │     │ └─┬ minimatch@9.0.9
+│   │     │   └── brace-expansion@2.1.7
+│   │     └─┬ minimatch@10.2.6
+│   │       └── brace-expansion@5.0.12 deduped
+│   ├─┬ jest-config@30.5.2
+│   │ └─┬ glob@13.0.6
+│   │   └─┬ minimatch@10.2.6
+│   │     └── brace-expansion@5.0.12 deduped
+│   └─┬ jest-runtime@30.5.2
+│     └─┬ glob@13.0.6
+│       └─┬ minimatch@10.2.6
+│         └── brace-expansion@5.0.12 deduped
+├─┬ minimatch@11.0.3
+│ └── brace-expansion@5.0.12 deduped
+└─┬ minimatch10@npm:minimatch@10.2.6
+  └── brace-expansion@5.0.12 deduped
+

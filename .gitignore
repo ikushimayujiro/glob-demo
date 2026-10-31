@@ -1,0 +1,7 @@
+node_modules/
+# 00-setup.sh / 05-tools.sh が生成するディレクトリ
+fixture/
+tools/
+# OS・エディタ
+.DS_Store
+*.log
