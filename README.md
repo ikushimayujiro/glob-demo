@@ -1,6 +1,6 @@
 # glob-demo
 
-Zenn の記事「globの仕組みを手で確かめる:node-glob・minimatch・brace-expansionの役割とツールごとの違い」のサンプルコードです。
+globの仕組みを手で確かめるサンプルコードです。
 
 <!-- TODO: 記事URL -->
 
